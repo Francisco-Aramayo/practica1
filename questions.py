@@ -27,22 +27,23 @@ answers = [
 correct_answers_index = [1, 2, 0, 3, 1]
 
 puntaje = 0.0
-#Se seleccionan 3 preguntas aleatorias
-questions_to_ask = random.sample(list(zip(questions,answers,correct_answers_index)), k=3)
+# Se seleccionan 3 preguntas aleatorias
+questions_to_ask = random.sample(
+    list(zip(questions, answers, correct_answers_index)), k=3)
 
 # Se recorre la lista de preguntas seleccionadas
 for question, answers, correct_index in questions_to_ask:
-     # Se muestra la pregunta y las respuestas posibles
+    # Se muestra la pregunta y las respuestas posibles
     print(question)
-    
+
     for i, answer in enumerate(answers):
         print(f"{i + 1}. {answer}")
 
     # El usuario tiene 2 intentos para responder correctamente
     acierto = False
     for intento in range(2):
-        user_answer = input("Respuesta: ") 
-    
+        user_answer = input("Respuesta: ")
+
         # Se verifica si la respuesta es correcta
         if not user_answer.isdigit():
             print("La respuesta no es valida!")
@@ -51,8 +52,8 @@ for question, answers, correct_index in questions_to_ask:
         user_answer = int(user_answer) - 1
 
         if user_answer < 0 or user_answer >= len(answers):
-                print("La respuesta no es valida!")
-                sys.exit(1)
+            print("La respuesta no es valida!")
+            sys.exit(1)
         elif user_answer == correct_index:
             print("¡Correcto!")
             puntaje += 1
@@ -66,8 +67,8 @@ for question, answers, correct_index in questions_to_ask:
     if not acierto:
         print("La respuesta correcta es:")
         print(answers[correct_index])
-             
+
     # Se imprime un blanco al final de la pregunta
     print()
 
-print('Puntaje final: ',puntaje)
+print('Puntaje final: ', puntaje)
